@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy as np
-import matplotlib as plt
 
 train_data = pd.read_csv('train.csv')
 sex_list = train_data[['PassengerId', 'Survived', 'Sex']]
