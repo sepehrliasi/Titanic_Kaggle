@@ -10,9 +10,9 @@ print(class_list.info())
 
 plt.figure(figsize=(10, 4))
 
-plt.hist(survived['Pclass'], bins=[1,2,3,4], rwidth=0.5, color='green', alpha=0.7, edgecolor='yellow')
+plt.hist(survived['Pclass'], bins=[1, 2, 3, 4], rwidth=0.5, color='green', alpha=0.7, edgecolor='yellow')
 
-plt.hist(died['Pclass'], bins=[1,2,3,4], rwidth=0.6, color='red', alpha=0.5)
+plt.hist(died['Pclass'], bins=[1, 2, 3, 4], rwidth=0.6, color='red', alpha=0.5)
 
 plt.title('Died & Survived Pclass distribution')
 
