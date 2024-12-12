@@ -1,13 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-train_data = pd.read_csv('train.csv')
+train_data = pd.read_csv('../train.csv')
 par_list = train_data[['PassengerId', 'Survived', 'Parch']]
 par_list = par_list.dropna(subset=['Parch'])
 survived = par_list[par_list['Survived'].isin([1])]
 died = par_list[par_list['Survived'].isin([0])]
 print(par_list.info())
-print('max', max(par_list['Parch']))     # Max is 8
+# print('max', max(par_list['Parch']))     # Max is 6
 
 plt.figure(figsize=(10, 4))
 

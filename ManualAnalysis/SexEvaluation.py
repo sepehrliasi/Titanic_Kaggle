@@ -1,6 +1,6 @@
 import pandas as pd
 
-train_data = pd.read_csv('train.csv')
+train_data = pd.read_csv('../train.csv')
 sex_list = train_data[['PassengerId', 'Survived', 'Sex']]
 print(sex_list.info())
 

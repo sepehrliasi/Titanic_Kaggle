@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-train_data = pd.read_csv('train.csv')
+train_data = pd.read_csv('../train.csv')
 class_list = train_data[['PassengerId', 'Survived', 'Pclass']]
 class_list = class_list.dropna(subset=['Pclass'])
 survived = class_list[class_list['Survived'].isin([1])]

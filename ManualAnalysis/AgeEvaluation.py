@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.ticker import PercentFormatter
 
-train_data = pd.read_csv('train.csv')
+train_data = pd.read_csv('../train.csv')
 age_list = train_data[['PassengerId', 'Survived', 'Age']]
 age_list = age_list.dropna(subset=['Age'])
 survived = age_list[age_list['Survived'].isin([1])]
