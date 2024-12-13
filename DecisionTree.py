@@ -1,5 +1,4 @@
 import csv
-
 import numpy as np
 import pandas
 from sklearn import tree
@@ -14,6 +13,7 @@ d = {'C': 0, 'Q': 1, 'S': 2}
 df['Embarked'] = df['Embarked'].map(d)
 
 df = df[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Embarked', 'Survived']]
+df['Age'].fillna(-10, inplace=True)
 df = df.dropna()
 
 features = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Embarked']
