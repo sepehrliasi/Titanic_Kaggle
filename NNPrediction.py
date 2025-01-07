@@ -16,10 +16,10 @@ d = {'C': 0, 'Q': 1, 'S': 2}
 df['Embarked'] = df['Embarked'].map(d)
 df['Age'].fillna(-10, inplace=True)
 
-df = df[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Embarked', 'Survived']]
+df = df[['Pclass', 'Fare', 'Sex', 'Age', 'SibSp', 'Parch', 'Embarked', 'Survived']]
 df = df.dropna()
 
-features = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Embarked']
+features = ['Pclass', 'Fare', 'Sex', 'Age', 'SibSp', 'Parch', 'Embarked']
 
 # Normalize the features
 scaler = MinMaxScaler()
@@ -34,12 +34,12 @@ print(X.shape)
 
 model = Sequential()
 # model.add(LSTM(8, input_shape=(1, 6)))
-model.add(LSTM(50, activation='relu', input_shape=(X.shape[1], X.shape[2])))
-model.add(Dense(25, activation='linear'))
+model.add(LSTM(10, activation='relu', input_shape=(X.shape[1], X.shape[2])))
+model.add(Dense(50, activation='linear'))
 model.add(Dense(1, activation='linear'))
 model.add(ReLU(max_value=1))
 model.compile(loss='mse', optimizer ='adam', metrics=['accuracy'])
-model.fit(X, y, epochs=100, batch_size=5)
+model.fit(X, y, epochs=120, batch_size=10)
 scores = model.evaluate(X, y, verbose=1, batch_size=5)
 print('Accuracy: {}'.format(scores[1]))
 
@@ -53,15 +53,15 @@ test['Embarked'] = test['Embarked'].map(d)
 
 mean_age = np.mean(test['Age'])
 test['Age'].fillna(mean_age, inplace=True)
-X_test = test[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Embarked']]
+X_test = test[['Pclass', 'Fare', 'Sex', 'Age', 'SibSp', 'Parch', 'Embarked']]
 
 scaled_test = scaler.fit_transform(X_test.iloc[:, :])
 scaled_test = scaled_test.reshape((scaled_test.shape[0], 1, scaled_test.shape[1]))
 
 predict = model.predict(scaled_test)
-print(predict)
+# print(predict)
 
-print(test.info())
+# print(test.info())
 
 results = []
 results.append(['PassengerId', 'Survived'])
