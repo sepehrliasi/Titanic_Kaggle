@@ -68,14 +68,13 @@ results.append(['PassengerId', 'Survived'])
 # print(results)
 id = 0
 for item in predict:
-    if predict < 0.5:
-        predict = 0
+    if predict[id] < 0.5:
+        results.append((pass_id[id], 0))
     else:
-        predict = 1
-    results.append((pass_id[id], predict[id]))
+        results.append((pass_id[id], 1))
     id += 1
 
 # print(results)
-with open('results1.csv', 'w', newline='') as csvfile:
+with open('resultsLSTM.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerows(results)
